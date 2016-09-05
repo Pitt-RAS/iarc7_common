@@ -1,0 +1,27 @@
+- git:
+    local-name: iarc7-motion
+    uri: https://github.com/Pitt-RAS/iarc7-motion
+- git:
+    local-name: iarc7-cleanflight-msp
+    uri: https://github.com/Pitt-RAS/iarc7-cleanflight-msp
+- git:
+    local-name: iarc7-gameplay
+    uri: https://github.com/Pitt-RAS/iarc7-gameplay
+- git:
+    local-name: iarc7-msgs
+    uri: https://github.com/Pitt-RAS/iarc7-msgs
+- git:
+    local-name: iarc7-safety
+    uri: https://github.com/Pitt-RAS/iarc7-safety
+- git:
+    local-name: iarc7-sensors
+    uri: https://github.com/Pitt-RAS/iarc7-sensors
+- git:
+    local-name: iarc7-ui
+    uri: https://github.com/Pitt-RAS/iarc7-ui
+- git:
+    local-name: iarc7-vision
+    uri: https://github.com/Pitt-RAS/iarc7-vision
+- git:
+    local-name: iarc7-launch
+    uri: https://github.com/Pitt-RAS/iarc7-launch
