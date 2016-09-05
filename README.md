@@ -8,24 +8,23 @@ Contains common documents and notably the rosinstall to initialize the RAS IARC7
 - Ubuntu 14.04
 - ROS Jade
 - Morse
-- Wstool
+- wstool
 
 ### Ubuntu 14.04
 
-	ROS Jade requires ubuntu 14.04, 14.10, or 15.04.
+ROS Jade requires ubuntu 14.04, 14.10, or 15.04.
 
-	If you don't have ubuntu installed, install 14.04 because its LTS (Long term service)
+If you don't have ubuntu installed, install 14.04 because its LTS (Long term service)
 
-    http://howtoubuntu.org/how-to-install-ubuntu-14-04-trusty-tahr
+http://howtoubuntu.org/how-to-install-ubuntu-14-04-trusty-tahr
 
-    Or make a chroot environment if you don't want to leave your current ubuntu distro.
-    http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot
+Or make a chroot environment if you don't want to leave your current ubuntu distro.
+http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot
 
 ### ROS Indigo
 
-    http://wiki.ros.org/indigo/Installation/Ubuntu
-
-    Install ros-indigo-desktop-full
+Install ros-indigo-desktop-full
+http://wiki.ros.org/indigo/Installation/Ubuntu
 
 ### Morse
 
