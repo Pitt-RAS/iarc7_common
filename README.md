@@ -49,10 +49,10 @@ mkdir -p iarc7/src
 cd iarc7
 
 # Clone iarc7 common for rosinstall file
-git clone https://github.com/Pitt-RAS/iarc7-common.git
+git clone https://github.com/Pitt-RAS/iarc7_common.git
 
 # Load rosinstall file to download iarc7 packages
-wstool init src iarc7-common/main.rosinstall
+wstool init src iarc7_common/main.rosinstall
 
 # Create build and devel folders
 catkin_make
