@@ -2,8 +2,8 @@
     local-name: iarc7_motion
     uri: https://github.com/Pitt-RAS/iarc7_motion
 - git:
-    local-name: iarc7_cleanflight_msp
-    uri: https://github.com/Pitt-RAS/iarc7_cleanflight_msp
+    local-name: iarc7_fc_comms
+    uri: https://github.com/Pitt-RAS/iarc7_fc_comms
 - git:
     local-name: iarc7_gameplay
     uri: https://github.com/Pitt-RAS/iarc7_gameplay
