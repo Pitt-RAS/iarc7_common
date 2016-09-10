@@ -10,7 +10,7 @@
 - git:
     local-name: iarc7_msgs
     uri: https://github.com/Pitt-RAS/iarc7_msgs
-- git
+- git:
     local-name: iarc7_safety
     uri: https://github.com/Pitt-RAS/iarc7_safety
 - git:
