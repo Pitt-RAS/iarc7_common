@@ -1,27 +1,28 @@
 - git:
-    local-name: iarc7-motion
-    uri: https://github.com/Pitt-RAS/iarc7-motion
+    local-name: iarc7_motion
+    uri: https://github.com/Pitt-RAS/iarc7_motion
 - git:
-    local-name: iarc7-cleanflight-msp
-    uri: https://github.com/Pitt-RAS/iarc7-cleanflight-msp
+    local-name: iarc7_cleanflight_msp
+    uri: https://github.com/Pitt-RAS/iarc7_leanflight_msp
 - git:
-    local-name: iarc7-gameplay
-    uri: https://github.com/Pitt-RAS/iarc7-gameplay
+    local-name: iarc7_gameplay
+    uri: https://github.com/Pitt-RAS/iarc7_gameplay
 - git:
-    local-name: iarc7-msgs
-    uri: https://github.com/Pitt-RAS/iarc7-msgs
+    local-name: iarc7_msgs
+    uri: https://github.com/Pitt-RAS/iarc7_msgs
+- git
+    local-name: iarc7_safety
+    uri: https://github.com/Pitt-RAS/iarc7_safety
 - git:
-    local-name: iarc7-safety
-    uri: https://github.com/Pitt-RAS/iarc7-safety
+    local-name: iarc7_sensors
+    uri: https://github.com/Pitt-RAS/iarc7_sensors
 - git:
-    local-name: iarc7-sensors
-    uri: https://github.com/Pitt-RAS/iarc7-sensors
+    local-name: iarc7_ui
+    uri: https://github.com/Pitt-RAS/iarc7_ui
 - git:
-    local-name: iarc7-ui
-    uri: https://github.com/Pitt-RAS/iarc7-ui
+    local-name: iarc7_vision
+    uri: https://github.com/Pitt-RAS/iarc7_vision
 - git:
-    local-name: iarc7-vision
-    uri: https://github.com/Pitt-RAS/iarc7-vision
-- git:
-    local-name: iarc7-launch
-    uri: https://github.com/Pitt-RAS/iarc7-launch
+    local-name: iarc7_launch
+    uri: https://github.com/Pitt-RAS/iarc7_launch
+
