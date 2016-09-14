@@ -25,4 +25,7 @@
 - git:
     local-name: iarc7_launch
     uri: https://github.com/Pitt-RAS/iarc7_launch
+- git:
+    local-name: serial
+    uri: https://github.com/wjwwood/serial
 
