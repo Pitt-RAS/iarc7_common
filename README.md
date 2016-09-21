@@ -75,6 +75,13 @@ And finally, make your ROS environment be set up automatically in the future:
 
 If you don't do this, you'll have to run `source ~/iarc7/devel/setup.bash` every time you open a new terminal.
 
+### SSH-keys
+
+If you wish to use ssh keys instead of http authentication.
+
+    cd ~/iarc7
+    find . -path "./src/iarc7_*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
+
 ### Morse
 
 See <https://github.com/amiller27/iarc7-simulator> for install instructions.
