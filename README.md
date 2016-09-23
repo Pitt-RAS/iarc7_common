@@ -124,4 +124,12 @@ Try a simulator!
     cd my_first_sim
     morse run my_first_sim
 
-Use the arrow keys to drive around! http://www.openrobots.org/morse/doc/stable/quickstart.html for more info.
+Use the arrow keys to drive around! http://www.openrobots.org/morse/doc/stable/quickstart.html for more info
+
+Download iarc7-simulator
+    cd ~/iarc7
+    git clone https://github.com/Pitt-RAS/iarc7-simulator.git
+    cd iarc7-simulator/
+    morse import sim
+    cd sim
+    morse run sim
