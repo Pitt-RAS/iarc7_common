@@ -112,5 +112,16 @@ Disable python version checking. The closest we can get to matching the system p
     echo "export MORSE_SILENT_PYTHON_CHECK=1 ">> ~/.bashrc
 
 See if everything is ok with:
+
     morse check
 
+Try a simulator!
+
+    cd ~/iarc7
+    mkdir morse
+    cd morse
+    morse create my_first_sim
+    cd my_first_sim
+    morse run my_first_sim
+
+Use the arrow keys to drive around! http://www.openrobots.org/morse/doc/stable/quickstart.html for more info.
