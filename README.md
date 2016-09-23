@@ -84,5 +84,33 @@ If you wish to use ssh keys instead of http authentication.
 
 ### Morse
 
-See <https://github.com/amiller27/iarc7-simulator> for install instructions.
+Install required packages:
+
+    sudo apt-get install cmake python-dev python3-numpy
+
+Download and unzip blender:
+We need this specific version as in v2.77 they switched to a newer version of python that ubuntu 14.04 does not come with.
+
+    cd ~
+    wget http://download.blender.org/release/Blender2.76/blender-2.76b-linux-glibc211-x86_64.tar.bz2
+    tar xvjf blender-2.76b-linux-glibc211-x86_64.tar.bz2
+
+Clone the latest blender and build/install it:
+
+    git clone https://github.com/morse-simulator/morse.git
+    cd morse
+    mkdir build && cd build
+    cmake ..
+    sudo make install
+
+Add blender environment variable, assumes you installed blender in your home directory:
+
+    echo "export MORSE_BLENDER="~/blender-2.76b-linux-glibc211-x86_64/blender" ">> ~/.bashrc
+
+Disable python version checking. The closest we can get to matching the system python and blender python versions is 3.4.3 and 3.4.2 respectively without building blender from source:
+
+    echo "export MORSE_SILENT_PYTHON_CHECK=1 ">> ~/.bashrc
+
+See if everything is ok with:
+    morse check
 
