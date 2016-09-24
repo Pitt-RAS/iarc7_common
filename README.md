@@ -86,7 +86,7 @@ If you wish to use ssh keys instead of http authentication.
 
 Install required packages:
 
-    sudo apt-get install cmake python-dev python3-numpy
+    sudo apt-get install cmake python3-dev python3-numpy
 
 Download and unzip blender:
 We need this specific version as in v2.77 they switched to a newer version of python that ubuntu 14.04 does not come with.
