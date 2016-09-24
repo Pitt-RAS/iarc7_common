@@ -65,13 +65,14 @@ Clone the iarc7\_common repository:
     git clone https://github.com/Pitt-RAS/iarc7_common.git
 
 Initialize workspace:
-
+    source /opt/ros/jade/setup.bash
     wstool init src iarc7_common/main.rosinstall
     catkin_make
 
 And finally, make your ROS environment be set up automatically in the future:
 
     echo "source ~/iarc7/devel/setup.bash" >> ~/.bashrc
+    source ~/.bashrc
 
 If you don't do this, you'll have to run `source ~/iarc7/devel/setup.bash` every time you open a new terminal.
 
