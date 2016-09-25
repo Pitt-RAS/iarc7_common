@@ -65,6 +65,7 @@ Clone the iarc7\_common repository:
     git clone https://github.com/Pitt-RAS/iarc7_common.git
 
 Initialize workspace:
+
     source /opt/ros/jade/setup.bash
     wstool init src iarc7_common/main.rosinstall
     catkin_make
