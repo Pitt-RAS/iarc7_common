@@ -128,6 +128,7 @@ Try a simulator!
 Use the arrow keys to drive around! http://www.openrobots.org/morse/doc/stable/quickstart.html for more info
 
 Download iarc7-simulator
+
     cd ~/iarc7
     git clone https://github.com/Pitt-RAS/iarc7-simulator.git
     cd iarc7-simulator/
