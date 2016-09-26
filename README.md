@@ -137,6 +137,12 @@ Try a simulator!
 
 Use the arrow keys to drive around! http://www.openrobots.org/morse/doc/stable/quickstart.html for more info
 
+Add ROS support to morse
+
+    sudo apt-get install python3-pip python3-yaml
+    sudo pip3 install catkin-tools
+    sudo pip3 install rospkg
+
 Download iarc7-simulator
 
     cd ~/iarc7
