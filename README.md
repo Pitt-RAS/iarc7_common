@@ -117,6 +117,15 @@ See if everything is ok with:
 
     morse check
 
+Install ROS support for MORSE
+
+    sudo apt-get install python3-pip
+    pip3 install --install-option="--prefix=~/blender-2.76b-linux-glibc211-x86_64/2.76/python" rospkg catkin_pkg catkin
+
+Make sure that the ROS integration was successful (if it was, the simulator should open with a demo scene.  It will crash if the installation failed.)
+
+    morse run /usr/local/share/morse/examples/tutorials/tutorial-1-ros.py
+
 Try a simulator!
 
     cd ~/iarc7
