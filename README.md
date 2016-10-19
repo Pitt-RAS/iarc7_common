@@ -113,7 +113,7 @@ Disable python version checking. The closest we can get to matching the system p
 
     echo "export MORSE_SILENT_PYTHON_CHECK=1 ">> ~/.bashrc
 
-See if everything is ok with:
+Now close the terminal and open a new one.  Then you can see if everything is ok with:
 
     morse check
 
