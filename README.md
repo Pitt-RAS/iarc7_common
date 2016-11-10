@@ -137,7 +137,7 @@ Try a simulator!
 
 Use the arrow keys to drive around! http://www.openrobots.org/morse/doc/stable/quickstart.html for more info
 
-Download iarc7-simulator (instructions copied from https://github.com/Pitt-RAS/iarc7-simulator)
+Download iarc7\_simulator (instructions copied from https://github.com/Pitt-RAS/iarc7\_simulator)
 
     cd ~/iarc7
     wstool merge -t src iarc7_common/simulator.rosinstall
