@@ -1,0 +1,3 @@
+- git:
+    local-name: iarc7_simulator
+    uri: https://github.com/Pitt-RAS/iarc7_simulator
