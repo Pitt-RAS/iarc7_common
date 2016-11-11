@@ -162,11 +162,11 @@ If your repositories are not on the branch master running wstool update can have
 
 If using https
 
-    cd src ; git clone git@github.com:Pitt-RAS/iarc7_simulator.git
+    cd src ; git clone https://github.com/Pitt-RAS/iarc7_simulator
 
 If using ssh
 
-    cd src ; git clone https://github.com/Pitt-RAS/iarc7_simulator
+    cd src ; git clone git@github.com:Pitt-RAS/iarc7_simulator.git
 
 Now import and compile the sim
 
