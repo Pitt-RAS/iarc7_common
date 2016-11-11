@@ -92,7 +92,7 @@ If you wish to use ssh keys instead of http authentication after setting up thro
 
     cd ~/iarc7
     find . -path "./src/*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
-    find . -path "./src/.rosinstall" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
+    sed -i "s/https:\/\/github.com\//git@github.com:/" ./src/.rosinstall
 
 ### Morse
 
