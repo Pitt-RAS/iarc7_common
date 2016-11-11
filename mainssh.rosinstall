@@ -1,0 +1,31 @@
+- git:
+    local-name: iarc7_motion
+    uri: git@github.com:Pitt-RAS/iarc7_motion.git
+- git:
+    local-name: iarc7_fc_comms
+    uri: git@github.com:Pitt-RAS/iarc7_fc_comms.git
+- git:
+    local-name: iarc7_gameplay
+    uri: git@github.com:Pitt-RAS/iarc7_gameplay.git
+- git:
+    local-name: iarc7_msgs
+    uri: git@github.com:Pitt-RAS/iarc7_msgs.git
+- git:
+    local-name: iarc7_safety
+    uri: git@github.com:Pitt-RAS/iarc7_safety.git
+- git:
+    local-name: iarc7_sensors
+    uri: git@github.com:Pitt-RAS/iarc7_sensors.git
+- git:
+    local-name: iarc7_ui
+    uri: git@github.com:Pitt-RAS/iarc7_ui.git
+- git:
+    local-name: iarc7_vision
+    uri: git@github.com:Pitt-RAS/iarc7_vision.git
+- git:
+    local-name: iarc7_launch
+    uri: git@github.com:Pitt-RAS/iarc7_launch.git
+- git:
+    local-name: serial
+    uri: git@github.com:wjwwood/serial.git
+

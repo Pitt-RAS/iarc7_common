@@ -64,10 +64,19 @@ Clone the iarc7\_common repository:
     cd ~/iarc7
     git clone https://github.com/Pitt-RAS/iarc7_common.git
 
-Initialize workspace:
+Source ros variables:
 
     source /opt/ros/jade/setup.bash
+
+Download the repos:
+
     wstool init src iarc7_common/main.rosinstall
+
+Use this if you want to use ssh instead:
+    wstool init src iarc7_common/mainssh.rosinstall
+
+Build for the first time
+
     catkin_make
 
 And finally, make your ROS environment be set up automatically in the future:
@@ -79,10 +88,11 @@ If you don't do this, you'll have to run `source ~/iarc7/devel/setup.bash` every
 
 ### SSH-keys
 
-If you wish to use ssh keys instead of http authentication.
+If you wish to use ssh keys instead of http authentication after setting up through https
 
     cd ~/iarc7
-    find . -path "./src/iarc7_*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
+    find . -path "./src/*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
+    sed -i "s/https:\/\/github.com\//git@github.com:/" ./src/.rosinstall
 
 ### Morse
 
@@ -141,8 +151,29 @@ Download iarc7\_simulator (instructions copied from https://github.com/Pitt-RAS/
 
     cd ~/iarc7
     wstool merge -t src iarc7_common/simulator.rosinstall
-    cd iarc7_simulator
+
+If using ssh use this instead:
+    wstool merge -t src iarc7_common/simulatorssh.rosinstall
+
+If this is your first time setting up an iarc workspace run
+    wstool update -t src
+
+If your repositories are not on the branch master running wstool update can have undesirable results run one of these to manually clone the sim:
+
+If using https
+
+    cd src ; git clone https://github.com/Pitt-RAS/iarc7_simulator
+
+If using ssh
+
+    cd src ; git clone git@github.com:Pitt-RAS/iarc7_simulator.git
+
+Now import and compile the sim
+
+    cd src/iarc7_simulator
     morse import sim
+    cd ~/iarc7
+    catkin_make
 
 To launch the simulator (make sure you've run `catkin_make` and sourced the correct setup script first, or else this won't work)
 
