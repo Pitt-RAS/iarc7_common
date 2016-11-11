@@ -91,7 +91,7 @@ If you don't do this, you'll have to run `source ~/iarc7/devel/setup.bash` every
 If you wish to use ssh keys instead of http authentication after setting up through https
 
     cd ~/iarc7
-    find . -path "./src/iarc7_*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
+    find . -path "./src/*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
     find . -path "./src/.rosinstall" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
 
 ### Morse
