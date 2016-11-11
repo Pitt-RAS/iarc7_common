@@ -141,7 +141,8 @@ Download iarc7\_simulator (instructions copied from https://github.com/Pitt-RAS/
 
     cd ~/iarc7
     wstool merge -t src iarc7_common/simulator.rosinstall
-    cd iarc7_simulator
+    wstool update -t src
+    cd src/iarc7_simulator
     morse import sim
 
 To launch the simulator (make sure you've run `catkin_make` and sourced the correct setup script first, or else this won't work)
