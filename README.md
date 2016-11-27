@@ -49,6 +49,10 @@ Run the following, you can copy and paste as one command:
 
 The full instructions are here but you shouldn't need them: https://gist.github.com/application2000/73fd6f4bf1be6600a2cf9f56315a2d91
 
+### Install required packages
+
+    sudo apt-get install libi2c-dev
+
 ### Setting up a workspace
 
 First, install ROS's tool for managing workspaces:
