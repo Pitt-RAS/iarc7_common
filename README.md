@@ -130,7 +130,7 @@ Now close the terminal and open a new one.  Then you can see if everything is ok
 Install ROS support for MORSE
 
     sudo apt-get install python3-pip
-    pip3 install --install-option="--prefix=~/blender-2.76b-linux-glibc211-x86_64/2.76/python" rospkg catkin_pkg catkin
+    pip3 install --install-option="--prefix=~/blender-2.76b-linux-glibc211-x86_64/2.76/python" rospkg catkin_pkg
 
 Make sure that the ROS integration was successful (if it was, the simulator should open with a demo scene.  It will crash if the installation failed.)
 
