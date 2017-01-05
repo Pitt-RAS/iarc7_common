@@ -34,9 +34,8 @@ Run the following:
     rosdep update
 
 If installing on ARM you will need to make this change to remove a warning that will fail the build.
-The file affected is /opt/ros/jade/include/ros/serialization.h
-
-    https://github.com/ros/roscpp_core/commit/4325fb7c9b31c739f4c86fe2a76a47055a5f56fa#diff-8fb8fffd5bd285b1d28f2d903953b067L204
+The file affected is `/opt/ros/jade/include/ros/serialization.h`.
+https://github.com/ros/roscpp_core/commit/4325fb7c9b31c739f4c86fe2a76a47055a5f56fa#diff-8fb8fffd5bd285b1d28f2d903953b067L204
 
 ### Install gcc6
 
@@ -61,11 +60,10 @@ The full instructions are here but you shouldn't need them: https://gist.github.
 
 ### Installing OpenCV
 
-It is easiest to install opencv from source given that we are using a specific version. (2.4.13) which is the same as OpenCV4Tegra as provided by Nvidia.
+It is easiest to install opencv from source given that we are using a specific version. Use version 2.4.13 which is the same as OpenCV4Tegra as provided by NVIDIA.
 
 Unzip this snapshot of source:
-
-    https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.13/
+https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.13/
 
 Switch to gcc4 for this (the above instructions made gcc4 and gcc6 available)
 
@@ -74,11 +72,10 @@ Switch to gcc4 for this (the above instructions made gcc4 and gcc6 available)
 Select gcc4 using the printed out menu.
 
 
-Finall to build follow these instructions:
+Finally to build follow these instructions:
+http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
 
-    http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
-
-Remember to switch back to gcc6
+Remember to switch back to gcc6.
 
 ### Setting up a workspace
 
