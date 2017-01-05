@@ -9,6 +9,7 @@ Contains common documents and notably the rosinstall to initialize the RAS IARC7
 - ROS Jade
 - Morse
 - wstool
+- OpenCV 2.4.13
 
 ### Ubuntu 14.04
 
@@ -32,6 +33,10 @@ Run the following:
     sudo rosdep init
     rosdep update
 
+If installing on ARM you will need to make this change to remove a warning that will fail the build.
+The file affected is `/opt/ros/jade/include/ros/serialization.h`.
+https://github.com/ros/roscpp_core/commit/4325fb7c9b31c739f4c86fe2a76a47055a5f56fa#diff-8fb8fffd5bd285b1d28f2d903953b067L204
+
 ### Install gcc6
 
 Run the following, you can copy and paste as one command:
@@ -52,6 +57,25 @@ The full instructions are here but you shouldn't need them: https://gist.github.
 ### Install required packages
 
     sudo apt-get install libi2c-dev
+
+### Installing OpenCV
+
+It is easiest to install opencv from source given that we are using a specific version. Use version 2.4.13 which is the same as OpenCV4Tegra as provided by NVIDIA.
+
+Unzip this snapshot of source:
+https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.13/
+
+Switch to gcc4 for this (the above instructions made gcc4 and gcc6 available)
+
+    sudo update-alternatives --config gcc
+
+Select gcc4 using the printed out menu.
+
+
+Finally to build follow these instructions:
+http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
+
+Remember to switch back to gcc6.
 
 ### Setting up a workspace
 
