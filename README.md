@@ -1,43 +1,47 @@
 # iarc7-common
 
-Contains common documents and notably the rosinstall to initialize the RAS IARC7 2017 ROS workspace.
+Master repository for the Pitt RAS team competing in Mission 7 of the International Aerial Robotics Competition
+
+Contains common documents and notably the rosinstall to initialize the ROS workspace.
 
 
 ## RAS IARC7 2017 Software Requirements
 
-- Ubuntu 14.04
-- ROS Jade
-- Morse
-- wstool
-- OpenCV 2.4.13
+- [Ubuntu 14.04](#ubuntu-1404)
+- [ROS Jade](#installing-ros-jade)
+- [gcc6](#installing-gcc6)
+- [wstool](#setting-up-a-workspace-with-wstool)
+- [Morse](#installing-morse)
+- [OpenCV 2.4.13](#installing-opencv)
+
+## Installation Instructions
 
 ### Ubuntu 14.04
 
 ROS Jade requires ubuntu 14.04, 14.10, or 15.04.
 
-If you don't have ubuntu installed, install 14.04 because its LTS (Long term service)
+If you don't have Ubuntu installed, install version 14.04 because it's LTS (Long term service). There's a useful tutorial [here](http://howtoubuntu.org/how-to-install-ubuntu-14-04-trusty-tahr).
 
-http://howtoubuntu.org/how-to-install-ubuntu-14-04-trusty-tahr
+If you already have Ubuntu, but a version different from 14.04, you can install Ubuntu 14.04 in a chroot environment under your existing operating system.  To do this, follow the instructions [here](http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot), but replace every occurence of "Indigo" with "Jade".
 
-Or make a chroot environment if you don't want to leave your current ubuntu distro.
-http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot
+### Installing ROS Jade
 
-### ROS Jade
+Run the following (you can copy and paste the whole thing):
 
-Run the following:
-
-    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-    sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 0xB01FA116
-    sudo apt-get update
-    sudo apt-get install ros-jade-desktop-full
-    sudo rosdep init
-    rosdep update
+```sh
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 0xB01FA116 && \
+sudo apt-get update && \
+sudo apt-get install ros-jade-desktop-full && \
+sudo rosdep init && \
+rosdep update
+```
 
 If installing on ARM you will need to make this change to remove a warning that will fail the build.
 The file affected is `/opt/ros/jade/include/ros/serialization.h`.
 https://github.com/ros/roscpp_core/commit/4325fb7c9b31c739f4c86fe2a76a47055a5f56fa#diff-8fb8fffd5bd285b1d28f2d903953b067L204
 
-### Install gcc6
+### Installing gcc6
 
 Run the following, you can copy and paste as one command:
 
@@ -54,30 +58,7 @@ Run the following, you can copy and paste as one command:
 
 The full instructions are here but you shouldn't need them: https://gist.github.com/application2000/73fd6f4bf1be6600a2cf9f56315a2d91
 
-### Install required packages
-
-    sudo apt-get install libi2c-dev
-
-### Installing OpenCV
-
-It is easiest to install opencv from source given that we are using a specific version. Use version 2.4.13 which is the same as OpenCV4Tegra as provided by NVIDIA.
-
-Unzip this snapshot of source:
-https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.13/
-
-Switch to gcc4 for this (the above instructions made gcc4 and gcc6 available)
-
-    sudo update-alternatives --config gcc
-
-Select gcc4 using the printed out menu.
-
-
-Finally to build follow these instructions:
-http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
-
-Remember to switch back to gcc6.
-
-### Setting up a workspace
+### Setting up a workspace with `wstool`
 
 First, install ROS's tool for managing workspaces:
 
@@ -100,8 +81,9 @@ Download the repos:
 
     wstool init src iarc7_common/main.rosinstall
 
-Use this if you want to use ssh instead:
-    wstool init src iarc7_common/mainssh.rosinstall
+Install dependencies:
+
+    rosdep install --from-paths src --ignore-src --rosdistro=jade -y
 
 Build for the first time
 
@@ -114,15 +96,7 @@ And finally, make your ROS environment be set up automatically in the future:
 
 If you don't do this, you'll have to run `source ~/iarc7/devel/setup.bash` every time you open a new terminal.
 
-### SSH-keys
-
-If you wish to use ssh keys instead of http authentication after setting up through https
-
-    cd ~/iarc7
-    find . -path "./src/*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
-    sed -i "s/https:\/\/github.com\//git@github.com:/" ./src/.rosinstall
-
-### Morse
+### Installing Morse
 
 Install required packages:
 
@@ -206,3 +180,30 @@ Now import and compile the sim
 To launch the simulator (make sure you've run `catkin_make` and sourced the correct setup script first, or else this won't work)
 
     roslaunch iarc7_simulator morse.launch
+
+### Installing OpenCV
+
+It is easiest to install OpenCV from source given that we are using a specific version. Use version 2.4.13 (this is the version that OpenCV4Tegra is based on).
+
+Unzip this snapshot of source:
+https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.13/
+
+Switch to gcc4 for this (the above instructions made gcc4 and gcc6 available)
+
+    sudo update-alternatives --config gcc
+
+Select gcc4 using the printed out menu.
+
+Finally, build and install OpenCV using [these instructions](http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html).
+
+Remember to switch back to gcc6 once OpenCV is installed.
+
+## Miscellaneous other notes
+
+### SSH Authentication for GitHub
+
+If you wish to use ssh keys instead of http authentication:
+
+    cd ~/iarc7
+    find . -path "./src/*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
+    sed -i "s/https:\/\/github.com\//git@github.com:/" ./src/.rosinstall
