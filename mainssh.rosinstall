@@ -5,8 +5,8 @@
     local-name: iarc7_fc_comms
     uri: git@github.com:Pitt-RAS/iarc7_fc_comms.git
 - git:
-    local-name: iarc7_gameplay
-    uri: git@github.com:Pitt-RAS/iarc7_gameplay.git
+    local-name: iarc7_abstract
+    uri: git@github.com:Pitt-RAS/iarc7_abstract.git
 - git:
     local-name: iarc7_msgs
     uri: git@github.com:Pitt-RAS/iarc7_msgs.git
