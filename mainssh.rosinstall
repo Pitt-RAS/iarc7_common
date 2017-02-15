@@ -30,4 +30,5 @@
     uri: git@github.com:wjwwood/serial.git
 - git:
     local-name: vision_opencv
-    uri: git@github.com:ros-perception/vision_opencv
+    uri: git@github.com:Pitt-RAS/vision_opencv
+    version: no-opencv-rosdep
