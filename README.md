@@ -4,6 +4,7 @@ Master repository for the Pitt RAS team competing in Mission 7 of the Internatio
 
 Contains common documents and notably the rosinstall to initialize the ROS workspace.
 
+Note: The default install instructions for these packages will not work.  You can get away with defaults for Ubuntu, ROS Jade, and gcc6, but the default install instructions will not work for wstool, Morse, or OpenCV.
 
 ## RAS IARC7 2017 Software Requirements
 
