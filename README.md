@@ -6,7 +6,9 @@ Contains common documents and notably the rosinstall to initialize the ROS works
 
 Note: The default install instructions for these packages will not work.  You can get away with defaults for Ubuntu, ROS Jade, and gcc6, but the default install instructions will not work for wstool, Morse, or OpenCV.
 
-## RAS IARC7 2017 Software Requirements
+## Table of Contents
+
+### [RAS IARC7 2017 Software Requirements](#installation-instructions)
 
 - [Ubuntu 14.04](#ubuntu-1404)
 - [ROS Jade](#installing-ros-jade)
@@ -14,6 +16,11 @@ Note: The default install instructions for these packages will not work.  You ca
 - [wstool](#setting-up-a-workspace-with-wstool)
 - [Morse](#installing-morse)
 - [OpenCV 2.4.13](#installing-opencv)
+
+### [Misc Other Instructions](#miscellaneous-other-notes)
+
+- [SSH Authentication With Workspaces](#ssh-authentication-for-github)
+- [Updating on changed dependencies](#updating-on-changed-dependencies)
 
 ## Installation Instructions
 
@@ -208,3 +215,20 @@ If you wish to use ssh keys instead of http authentication:
     cd ~/iarc7
     find . -path "./src/*/.git/config" | xargs -n 1 sed -i "s/https:\/\/github.com\//git@github.com:/"
     sed -i "s/https:\/\/github.com\//git@github.com:/" ./src/.rosinstall
+
+### Updating on Changed Dependencies
+
+When new packages are added to the `rosinstall` files in this repository, run
+the following to update:
+
+```sh
+cd ~/iarc7/iarc7_common && \
+git pull && \
+cd ~/iarc7 && \
+wstool merge -t src iarc7_common/main.rosinstall && \
+wstool update -t src
+```
+
+If you're using ssh authentication, run the snippet under
+[SSH Authentication for GitHub](#ssh-authentication-for-github) again after
+running the above.
