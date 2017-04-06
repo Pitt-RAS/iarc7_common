@@ -26,6 +26,9 @@
     local-name: iarc7_launch
     uri: git@github.com:Pitt-RAS/iarc7_launch.git
 - git:
+    local-name: ros_utils
+    uri: git@github.com:Pitt-RAS/ros_utils.git
+- git:
     local-name: robot_localization
     uri: git@github.com:Pitt-RAS/robot_localization.git
     version: no-rotation-mode
