@@ -33,6 +33,10 @@
     uri: git@github.com:Pitt-RAS/robot_localization.git
     version: no-rotation-mode
 - git:
+    local-name: bond_core
+    uri: git@github.com:ros/bond_core
+    version: ca90ed2
+- git:
     local-name: serial
     uri: git@github.com:wjwwood/serial.git
 - git:
