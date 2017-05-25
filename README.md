@@ -4,14 +4,14 @@ Master repository for the Pitt RAS team competing in Mission 7 of the Internatio
 
 Contains common documents and notably the rosinstall to initialize the ROS workspace.
 
-Note: The default install instructions for these packages will not work.  You can get away with defaults for Ubuntu, ROS Jade, and gcc6, but the default install instructions will not work for wstool, Morse, or OpenCV.
+Note: The default install instructions for these packages will not work.  You can get away with defaults for Ubuntu, ROS Kinetic, and gcc6, but the default install instructions will not work for wstool, Morse, or OpenCV.
 
 ## Table of Contents
 
 ### [RAS IARC7 2017 Software Requirements](#installation-instructions)
 
-- [Ubuntu 14.04](#ubuntu-1404)
-- [ROS Jade](#installing-ros-jade)
+- [Ubuntu 16.04](#ubuntu-1604)
+- [ROS Kinetic](#installing-ros-kinetic)
 - [gcc6](#installing-gcc6)
 - [wstool](#setting-up-a-workspace-with-wstool)
 - [Morse](#installing-morse)
@@ -24,15 +24,15 @@ Note: The default install instructions for these packages will not work.  You ca
 
 ## Installation Instructions
 
-### Ubuntu 14.04
+### Ubuntu 16.04
 
-ROS Jade requires ubuntu 14.04, 14.10, or 15.04.
+ROS Kinetic requires ubuntu 16.04
 
-If you don't have Ubuntu installed, install version 14.04 because it's LTS (Long term service). There's a useful tutorial [here](http://howtoubuntu.org/how-to-install-ubuntu-14-04-trusty-tahr).
+If you don't have Ubuntu installed, install version 16.04 because it's LTS (Long term service). There's a useful tutorial [here](https://www.ubuntu.com/download/desktop/install-ubuntu-desktop).
 
-If you already have Ubuntu, but a version different from 14.04, you can install Ubuntu 14.04 in a chroot environment under your existing operating system.  To do this, follow the instructions [here](http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot), but replace every occurence of "Indigo" with "Jade".
+If you already have Ubuntu, but a version different from 16.04, you can install Ubuntu 16.04 in a chroot environment under your existing operating system.  To do this, follow the instructions [here](http://wiki.ros.org/ROS/Tutorials/InstallingIndigoInChroot), but replace every occurence of "Indigo" with "Kinetic" and "trusty" with "xenial".
 
-### Installing ROS Jade
+### Installing ROS Kinetic
 
 Run the following (you can copy and paste the whole thing):
 
@@ -40,14 +40,10 @@ Run the following (you can copy and paste the whole thing):
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 0xB01FA116 && \
 sudo apt-get update && \
-sudo apt-get install ros-jade-desktop-full && \
+sudo apt-get install ros-kinetic-desktop-full && \
 sudo rosdep init && \
 rosdep update
 ```
-
-If installing on ARM you will need to make this change to remove a warning that will fail the build.
-The file affected is `/opt/ros/jade/include/ros/serialization.h`.
-https://github.com/ros/roscpp_core/commit/4325fb7c9b31c739f4c86fe2a76a47055a5f56fa#diff-8fb8fffd5bd285b1d28f2d903953b067L204
 
 ### Installing gcc6
 
@@ -83,7 +79,7 @@ Clone the iarc7\_common repository:
 
 Source ros variables:
 
-    source /opt/ros/jade/setup.bash
+    source /opt/ros/kinetic/setup.bash
 
 Download the repos:
 
@@ -91,7 +87,7 @@ Download the repos:
 
 Install dependencies:
 
-    rosdep install --from-paths src --ignore-src --rosdistro=jade -y
+    rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
 
 Build for the first time
 
@@ -111,11 +107,11 @@ Install required packages:
     sudo apt-get install cmake python3-dev python3-numpy
 
 Download and unzip blender:
-We need this specific version as in v2.77 they switched to a newer version of python that ubuntu 14.04 does not come with.
+We need this specific version because it matches the system python version.
 
     cd ~
-    wget http://download.blender.org/release/Blender2.76/blender-2.76b-linux-glibc211-x86_64.tar.bz2
-    tar xvjf blender-2.76b-linux-glibc211-x86_64.tar.bz2
+    wget http://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc211-x86_64.tar.bz2
+    tar xvjf blender-2.78c-linux-glibc211-x86_64.tar.bz2
 
 Clone the latest blender and build/install it:
 
@@ -127,11 +123,7 @@ Clone the latest blender and build/install it:
 
 Add blender environment variable, assumes you installed blender in your home directory:
 
-    echo "export MORSE_BLENDER="~/blender-2.76b-linux-glibc211-x86_64/blender" ">> ~/.bashrc
-
-Disable python version checking. The closest we can get to matching the system python and blender python versions is 3.4.3 and 3.4.2 respectively without building blender from source:
-
-    echo "export MORSE_SILENT_PYTHON_CHECK=1 ">> ~/.bashrc
+    echo "export MORSE_BLENDER="~/blender-2.78c-linux-glibc211-x86_64/blender" ">> ~/.bashrc
 
 Now close the terminal and open a new one.  Then you can see if everything is ok with:
 
@@ -140,7 +132,7 @@ Now close the terminal and open a new one.  Then you can see if everything is ok
 Install ROS support for MORSE (Note: DO NOT install `python3-rospkg` with `apt-get`)
 
     sudo apt-get install python3-pip
-    pip3 install --ignore-installed --install-option="--prefix=~/blender-2.76b-linux-glibc211-x86_64/2.76/python" rospkg catkin_pkg
+    pip3 install --ignore-installed --install-option="--prefix=~/blender-2.78c-linux-glibc211-x86_64/2.78/python" rospkg catkin_pkg
 
 Make sure that the ROS integration was successful (if it was, the simulator should open with a demo scene.  It will crash if the installation failed.)
 
