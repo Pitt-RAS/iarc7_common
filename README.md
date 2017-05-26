@@ -110,10 +110,10 @@ Download and unzip blender:
 We need this specific version because it matches the system python version.
 
     cd ~
-    wget http://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc211-x86_64.tar.bz2
-    tar xvjf blender-2.78c-linux-glibc211-x86_64.tar.bz2
+    wget http://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2
+    tar xvjf blender-2.78c-linux-glibc219-x86_64.tar.bz2
 
-Clone the latest blender and build/install it:
+Clone the latest morse and build/install it:
 
     git clone https://github.com/morse-simulator/morse.git
     cd morse
@@ -123,7 +123,7 @@ Clone the latest blender and build/install it:
 
 Add blender environment variable, assumes you installed blender in your home directory:
 
-    echo "export MORSE_BLENDER="~/blender-2.78c-linux-glibc211-x86_64/blender" ">> ~/.bashrc
+    echo "export MORSE_BLENDER="~/blender-2.78c-linux-glibc219-x86_64/blender" ">> ~/.bashrc
 
 Now close the terminal and open a new one.  Then you can see if everything is ok with:
 
@@ -132,7 +132,7 @@ Now close the terminal and open a new one.  Then you can see if everything is ok
 Install ROS support for MORSE (Note: DO NOT install `python3-rospkg` with `apt-get`)
 
     sudo apt-get install python3-pip
-    pip3 install --ignore-installed --install-option="--prefix=~/blender-2.78c-linux-glibc211-x86_64/2.78/python" rospkg catkin_pkg
+    pip3 install --ignore-installed --install-option="--prefix=~/blender-2.78c-linux-glibc219-x86_64/2.78/python" rospkg catkin_pkg
 
 Make sure that the ROS integration was successful (if it was, the simulator should open with a demo scene.  It will crash if the installation failed.)
 
@@ -158,6 +158,7 @@ If using ssh use this instead:
     wstool merge -t src iarc7_common/simulatorssh.rosinstall
 
 If this is your first time setting up an iarc workspace run
+
     wstool update -t src
 
 If your repositories are not on the branch master running wstool update can have undesirable results run one of these to manually clone the sim:
