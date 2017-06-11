@@ -62,14 +62,9 @@ Run the following, you can copy and paste as one command:
 
 The full instructions are here but you shouldn't need them: https://gist.github.com/application2000/73fd6f4bf1be6600a2cf9f56315a2d91
 
-### Installing CUDA (NVIDIA cards only, instructions for non NVIDA users coming soon)
+### Installing CUDA (NVIDIA cards only, non-NVIDIA users can skip this part)
 
-Enable NVIDIA drivers
-
-    Open Software and Updates
-    Click Additional Drivers
-    Enable the NVIDIA binary driver for your graphics card
-    reboot
+Enable NVIDIA drivers (this depends on what GPU you have, you'll need to look up instructions online)
 
 Select the gcc-5 compiler using the onscreen prompts
 
