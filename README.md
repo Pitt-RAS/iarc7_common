@@ -12,7 +12,8 @@ Note: The default install instructions for these packages will not work.  You ca
 
 - [Ubuntu 16.04](#ubuntu-1604)
 - [ROS Kinetic](#installing-ros-kinetic)
-- [gcc6](#installing-gcc6)
+- [gcc6 and gcc5](#installing-gcc6-and-gcc5)
+- [CUDA](#installing-cuda)
 - [wstool](#setting-up-a-workspace-with-wstool)
 - [Morse](#installing-morse)
 - [OpenCV 2.4.13](#installing-opencv)
@@ -40,7 +41,7 @@ Run the following (you can copy and paste the whole thing):
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 0xB01FA116 && \
 sudo apt-get update && \
-sudo apt-get install ros-kinetic-desktop-full && \
+sudo apt-get install ros-kinetic-ros-base && \
 sudo rosdep init && \
 rosdep update
 ```
@@ -57,10 +58,66 @@ Run the following, you can copy and paste as one command:
     sudo apt-get update && \
     sudo apt-get install gcc-6 g++-6 -y && \
     sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 && \
-    sudo apt-get install gcc-4.8 g++-4.8 -y && \
-    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8;
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5;
 
 The full instructions are here but you shouldn't need them: https://gist.github.com/application2000/73fd6f4bf1be6600a2cf9f56315a2d91
+
+### Installing CUDA (NVIDIA cards only, non-NVIDIA users can skip this part)
+
+Enable NVIDIA drivers (this depends on what GPU you have, you'll need to look up instructions online)
+
+Select the gcc-5 compiler using the onscreen prompts
+
+    sudo update-alternatives --config gcc
+
+Download the CUDA 8 package
+
+    cd ~/Downloads && \
+    wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run && \
+    mv cuda_8.0.61_375.26_linux-run.1 cuda_8.0.61_375.26_linux.run && \
+    chmod +x cuda_8.0.61_375.26_linux.run && \
+    sudo ./cuda_8.0.61_375.26_linux.run --silent --toolkit --samples --override
+
+If continuing to install opencv do not switch back to gcc-6 using update-alternatives. Otherwise switch back to gcc-6
+
+    sudo update-alternatives --config gcc
+
+### Installing OpenCV
+
+Select the gcc-5 compiler using the onscreen prompts
+
+    sudo update-alternatives --config gcc
+
+It is easiest to install OpenCV from source given that we are using a specific version. Use version 2.4.13 (this is the version that OpenCV4Tegra is based on).
+
+Unzip this snapshot of source in your home directory:
+
+    https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.13/opencv-2.4.13.zip/download
+
+The instructions for install opencv are based off of this guide [here](http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html).
+
+Install packages
+
+    sudo apt-get install build-essential -y && \
+    sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev -y && \
+    sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev -y;
+
+Setup build directory
+
+    cd ~/opencv-2.4.13 && \
+    mkdir release && \
+    cd release && \
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..;
+
+Build, replace the number for with the number of cores you have (This will take a hot minute)
+
+    make -j4
+
+Install
+
+    sudo make install
+
+Remember to switch back to gcc6 once OpenCV is installed.
 
 ### Setting up a workspace with `wstool`
 
@@ -95,8 +152,8 @@ Build for the first time
 
 And finally, make your ROS environment be set up automatically in the future:
 
-    echo "source ~/iarc7/devel/setup.bash" >> ~/.bashrc
-    source ~/.bashrc
+    echo "source ~/iarc7/devel/setup.bash" >> ~/.bashrc && \
+    source ~/.bashrc;
 
 If you don't do this, you'll have to run `source ~/iarc7/devel/setup.bash` every time you open a new terminal.
 
@@ -109,94 +166,52 @@ Install required packages:
 Download and unzip blender:
 We need this specific version because it matches the system python version.
 
-    cd ~
-    wget http://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc211-x86_64.tar.bz2
-    tar xvjf blender-2.78c-linux-glibc211-x86_64.tar.bz2
+    cd ~ && \
+    wget http://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2 && \
+    tar xvjf blender-2.78c-linux-glibc219-x86_64.tar.bz2;
 
-Clone the latest blender and build/install it:
+Clone the latest morse and build/install it:
 
-    git clone https://github.com/morse-simulator/morse.git
-    cd morse
-    mkdir build && cd build
-    cmake ..
-    sudo make install
+    git clone https://github.com/morse-simulator/morse.git && \
+    cd morse && \
+    mkdir build && cd build && \
+    cmake .. && \
+    sudo make install;
 
 Add blender environment variable, assumes you installed blender in your home directory:
 
-    echo "export MORSE_BLENDER="~/blender-2.78c-linux-glibc211-x86_64/blender" ">> ~/.bashrc
+    echo "export MORSE_BLENDER="~/blender-2.78c-linux-glibc219-x86_64/blender" ">> ~/.bashrc && \
+    source ~/.bashrc;
 
-Now close the terminal and open a new one.  Then you can see if everything is ok with:
+Check if everything is ok with:
 
     morse check
 
 Install ROS support for MORSE (Note: DO NOT install `python3-rospkg` with `apt-get`)
 
-    sudo apt-get install python3-pip
-    pip3 install --ignore-installed --install-option="--prefix=~/blender-2.78c-linux-glibc211-x86_64/2.78/python" rospkg catkin_pkg
-
-Make sure that the ROS integration was successful (if it was, the simulator should open with a demo scene.  It will crash if the installation failed.)
-
-    morse run /usr/local/share/morse/examples/tutorials/tutorial-1-ros.py
-
-Try a simulator!
-
-    cd ~/iarc7
-    mkdir morse
-    cd morse
-    morse create my_first_sim
-    cd my_first_sim
-    morse run my_first_sim
-
-Use the arrow keys to drive around! http://www.openrobots.org/morse/doc/stable/quickstart.html for more info
+    sudo apt-get install python3-pip && \
+    pip3 install --ignore-installed --install-option="--prefix=~/blender-2.78c-linux-glibc219-x86_64/2.78/python" rospkg catkin_pkg
 
 Download iarc7\_simulator (instructions copied from https://github.com/Pitt-RAS/iarc7_simulator)
 
-    cd ~/iarc7
-    wstool merge -t src iarc7_common/simulator.rosinstall
-
-If using ssh use this instead:
-    wstool merge -t src iarc7_common/simulatorssh.rosinstall
+    cd ~/iarc7 && /
+    wstool merge -t src iarc7_common/simulator.rosinstall;
 
 If this is your first time setting up an iarc workspace run
+
     wstool update -t src
-
-If your repositories are not on the branch master running wstool update can have undesirable results run one of these to manually clone the sim:
-
-If using https
-
-    cd src ; git clone https://github.com/Pitt-RAS/iarc7_simulator
-
-If using ssh
-
-    cd src ; git clone git@github.com:Pitt-RAS/iarc7_simulator.git
 
 Now import and compile the sim
 
-    cd src/iarc7_simulator
-    morse import sim
-    cd ~/iarc7
-    catkin_make
+    cd ~/iarc7 && \
+    cd src/iarc7_simulator && \
+    morse import sim && \
+    cd ~/iarc7 && \
+    catkin_make;
 
-To launch the simulator (make sure you've run `catkin_make` and sourced the correct setup script first, or else this won't work)
+To launch the simulator (It won't do anything, just render the scene)
 
     roslaunch iarc7_simulator morse.launch
-
-### Installing OpenCV
-
-It is easiest to install OpenCV from source given that we are using a specific version. Use version 2.4.13 (this is the version that OpenCV4Tegra is based on).
-
-Unzip this snapshot of source:
-https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.13/
-
-Switch to gcc4 for this (the above instructions made gcc4 and gcc6 available)
-
-    sudo update-alternatives --config gcc
-
-Select gcc4 using the printed out menu.
-
-Finally, build and install OpenCV using [these instructions](http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html).
-
-Remember to switch back to gcc6 once OpenCV is installed.
 
 ## Miscellaneous other notes
 
