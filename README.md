@@ -6,6 +6,6 @@ For other IARC teams finding this repository, we've made it public intentionally
 
 [The wiki on this repository](https://github.com/Pitt-RAS/iarc7_common/wiki) contains a thorough description of our entire system, along with detailed information on various subsystems.  If you're interesed in learning more about our design, it's a good place to start.
 
-This repository specifically contains common documents and files needed to set up our software systems.  Installation instructions can be found [here](https://github.com/Pitt-RAS/iarc7_common/wiki/Installation)
+This repository specifically contains common documents and files needed to set up our software systems.  Installation instructions can be found [here](https://github.com/Pitt-RAS/iarc7_common/wiki/Installation).
 
-Basic instructions to use the launch system can be found [here](https://github.com/Pitt-RAS/iarc7_common/wiki/Launch-File-System)
+Basic instructions to use the launch system can be found [here](https://github.com/Pitt-RAS/iarc7_common/wiki/Launch-File-System).
